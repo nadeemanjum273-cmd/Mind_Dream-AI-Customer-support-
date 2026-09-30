@@ -96,7 +96,7 @@ class RAGEngine:
 
         try:
             self.llm_primary = ChatGoogleGenerativeAI(
-                model="gemini-3.5-flash-lite",
+                model="gemini-2.5-flash",
                 temperature=0.1,
                 google_api_key=self.api_key
             )
@@ -105,7 +105,7 @@ class RAGEngine:
 
         try:
             self.llm_fallback = ChatGoogleGenerativeAI(
-                model="gemini-3.8-flash",
+                model="gemini-2.5-flash-lite",
                 temperature=0.1,
                 google_api_key=self.api_key
             )
@@ -352,10 +352,13 @@ I have recorded your refund bank transfer information directly into our system:
 Please let me know if you need any additional assistance!"""
 
         # 2. Placing an order
-        is_order_intent = bool(re.search(
-            r"\b(place\s+(?:an?\s+|my\s+)?order|order\s+(?:this|for|an?|item|now|placement)|buy|purchase|i\s+want\s+to\s+order|book\s+order|take\s+my\s+order|want\s+to\s+buy)\b",
-            q_lower
-        )) or ("order" in q_lower and any(w in q_lower for w in ["place", "want", "please", "book", "buy", "send"]))
+        is_order_intent = (
+            bool(re.search(
+                r"\b(place\s+(?:an?\s+|my\s+)?order|buy\s+(?:a|an|the|this|me)|purchase\s+(?:a|an|the|this)|i\s+want\s+to\s+(?:buy|order)|book\s+(?:an?\s+)?order|order\s+(?:now|this\s+item|for\s+[a-zA-Z]+))\b",
+                q_lower
+            ))
+            and not any(w in q_lower for w in ["status", "track", "history", "check", "return", "refund", "policy", "what is", "tell me", "can sara", "can i", "eligible", "price", "how much", "warranty", "list all", "all laptop"])
+        )
 
         if is_order_intent:
             excel_path = GOOGLE_DRIVE_EXCEL_PATH if GOOGLE_DRIVE_EXCEL_PATH.exists() else PRODUCTS_PATH
