@@ -11,7 +11,8 @@ import {
   ThumbsUp, 
   ThumbsDown, 
   Database, 
-  FileText
+  FileText,
+  Sparkles
 } from "lucide-react";
 
 export interface ChatMessage {
@@ -84,14 +85,10 @@ export const MessageList: React.FC<MessageListProps> = ({
                   <User className="w-4 h-4" />
                 </div>
               ) : (
-                <div className="w-8 h-8 rounded-full overflow-hidden border border-amber-400/40 shadow-md bg-black flex items-center justify-center">
-                  <Image
-                    src="/logo.png"
-                    alt="Mind_Dream Logo"
-                    width={32}
-                    height={32}
-                    className="object-cover w-full h-full"
-                  />
+                <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 via-indigo-600 to-amber-400 p-[1.5px] shadow-md flex items-center justify-center">
+                  <div className="w-full h-full bg-[#111420] rounded-full flex items-center justify-center">
+                    <Sparkles className="w-4 h-4 text-amber-300" />
+                  </div>
                 </div>
               )}
             </div>

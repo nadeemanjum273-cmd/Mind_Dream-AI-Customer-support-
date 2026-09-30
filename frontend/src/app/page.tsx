@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { ChatHeader } from "@/components/ChatHeader";
 import { MessageList, ChatMessage } from "@/components/MessageList";
-import { ActionChips } from "@/components/ActionChips";
 import { ChatInput } from "@/components/ChatInput";
 import { ProductCatalogView, ProductItem } from "@/components/ProductCatalogView";
 import { OrderTrackingView } from "@/components/OrderTrackingView";
@@ -190,15 +189,10 @@ export default function HomePage() {
       <nav className="h-14 border-b border-white/10 bg-[#121624] px-4 flex items-center justify-between z-30">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full overflow-hidden border border-amber-400/50 bg-black flex items-center justify-center shadow-md shadow-amber-900/30">
-              <Image
-                src="/logo.png"
-                alt="Mind_Dream Logo"
-                width={32}
-                height={32}
-                className="object-cover w-full h-full"
-                priority
-              />
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 via-indigo-600 to-amber-400 p-[1.5px] flex items-center justify-center shadow-md shadow-purple-900/40">
+              <div className="w-full h-full bg-[#0e111a] rounded-[6.5px] flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-amber-300" />
+              </div>
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-sm text-white tracking-wide leading-none">
@@ -275,10 +269,10 @@ export default function HomePage() {
             <span>{layoutMode === "split" ? "Side-by-Side" : "Full View"}</span>
           </button>
 
-          <span className="hidden sm:inline-flex items-center gap-1 text-[11px] text-amber-300 font-medium px-2 py-0.5 rounded-full bg-amber-950/40 border border-amber-500/30">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-            Mind_Dream AI
-          </span>
+          <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-300 px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">
+            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span className="font-medium text-slate-200">Online</span>
+          </div>
         </div>
       </nav>
 
@@ -336,8 +330,8 @@ export default function HomePage() {
             {/* Context Strip */}
             <div className="px-4 py-1.5 flex items-center justify-between bg-[#151926] border-b border-white/5 text-[11px] text-slate-400">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full overflow-hidden border border-amber-400/40 bg-black flex-shrink-0">
-                  <Image src="/logo.png" alt="Logo" width={16} height={16} className="w-full h-full object-cover" />
+                <div className="w-4 h-4 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="w-2.5 h-2.5 text-white" />
                 </div>
                 <span className="text-slate-300 font-medium">
                   Active Session • Mind_Dream Store Assistant
@@ -365,12 +359,6 @@ export default function HomePage() {
               messages={messages}
               isLoading={isLoading}
               onSelectPrompt={handleSendMessage}
-            />
-
-            {/* Action Chips */}
-            <ActionChips
-              onSelectPrompt={handleSendMessage}
-              disabled={isLoading}
             />
 
             {/* Sticky Composer */}
