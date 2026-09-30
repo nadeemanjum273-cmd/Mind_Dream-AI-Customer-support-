@@ -1,0 +1,21 @@
+{
+  "name": "mind-dream-ecommerce-agent",
+  "version": "1.0.0",
+  "description": "Production-ready Next.js E-Commerce Support Agent with FastAPI, LangChain, ChromaDB, and Gemini",
+  "scripts": {
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload",
+    "build:frontend": "cd frontend && npm run build",
+    "reindex": "cd backend && python -c \"import sys; sys.path.insert(0, '.'); from rag_engine import rag_engine; rag_engine.build_index(force=True)\""
+  },
+  "keywords": [
+    "nextjs",
+    "fastapi",
+    "langchain",
+    "gemini",
+    "rag",
+    "chromadb"
+  ],
+  "author": "Google Deepmind Antigravity Pair Programmer",
+  "license": "MIT"
+}
