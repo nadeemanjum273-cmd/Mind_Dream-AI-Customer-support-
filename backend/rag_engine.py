@@ -96,7 +96,7 @@ class RAGEngine:
 
         try:
             self.llm_primary = ChatGoogleGenerativeAI(
-                model="gemini-2.5-flash",
+                model="gemini-flash-latest",
                 temperature=0.1,
                 google_api_key=self.api_key
             )
@@ -105,7 +105,7 @@ class RAGEngine:
 
         try:
             self.llm_fallback = ChatGoogleGenerativeAI(
-                model="gemini-2.5-flash-lite",
+                model="gemini-flash-lite-latest",
                 temperature=0.1,
                 google_api_key=self.api_key
             )

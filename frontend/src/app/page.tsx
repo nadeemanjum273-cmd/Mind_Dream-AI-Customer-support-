@@ -147,7 +147,7 @@ export default function HomePage() {
         id: `err-${Date.now()}`,
         role: "assistant",
         content:
-          "Hello! I am **Mind_Dream**. I am processing your request. Please let me know the product name and your name to place an order, or your Order ID to check return eligibility.",
+          "⚠️ I encountered a temporary connection issue. Please check your internet connection or try sending your message again.",
         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
       };
       setMessages((prev) => [...prev, errorMsg]);
